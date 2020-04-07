@@ -1,0 +1,123 @@
+cabal-version:       2.4
+
+name:                maple
+version:             0
+synopsis:            The story goes, the ways of the future were shown in the Maple.
+-- description:
+homepage:            https://oss.xkcd.com/
+bug-reports:         https://code.xkrd.net/xkcd/maple/issues
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              davean
+maintainer:          oss@xkcd.com
+copyright:           xkcd 2020
+category:            Web
+extra-source-files:  CHANGELOG.md
+
+common deps
+  default-language:    Haskell2010
+  ghc-options: -O2
+  build-depends:
+      aeson
+    , attoparsec
+    , base >=4.12.0.0 && < 4.15
+    , base64
+    , bcrypt
+    , directory
+    , bytes
+    , bytestring
+    , cassava
+    , cereal
+    , clientsession
+    , containers
+    , cookie
+    , crypto-api
+    , delay
+    , exceptions
+    , filepath
+    , hashable
+    , hedis
+    , http-date
+    , http-types
+    , ip
+    , JuicyPixels
+    , monad-loops
+    , mtl
+    , network
+    , lens
+    , linear
+    , mime-types
+    , random
+    , ref-fd
+    , safe
+    , servant
+    , servant-server
+    , skein
+    , stm
+    , tai
+    , tagged
+    , text
+    , time
+    , uuid
+    , vector
+    , wai
+    , wai-cors
+    , wai-app-static
+    , wide-word
+
+library
+  import: deps
+  hs-source-dirs:      src
+  exposed-modules:
+    Maple.AABB
+    Maple.Config
+    Maple.Loot
+    Maple.Map
+    Maple.Session
+    Maple.Staticize
+    Maple.Storage.Redis
+    Maple.Storage.Ref
+    Maple.TextHintParser
+    Maple.Web
+    Maple.Web.Admin
+    Maple.Web.API
+    Maple.Web.Local
+    Maple.Web.Session
+    Maple.Web.Server
+
+executable maple-example
+  import: deps
+  main-is:             Main.hs
+  build-depends:
+      maple
+    , warp
+
+executable maple-doc-gen
+  import: deps
+  hs-source-dirs:      doc-gen
+  main-is:             Main.hs
+  build-depends:
+      maple
+    , servant-docs
+
+test-suite maple-test
+  import: deps
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             MapleTest.hs
+  other-modules:
+      AABBTest
+      ParserTests
+  build-depends:
+      binary
+    , maple
+    , QuickCheck
+    , process
+    , tasty
+    , tasty-hunit
+    , tasty-test-reporter
+    , tasty-test-vector
+    , tasty-quickcheck
+    , wai
+    , wai-extra
+    , with-utf8

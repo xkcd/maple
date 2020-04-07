@@ -1,0 +1,51 @@
+{
+  "name": "maple-client",
+  "version": "1.0.0",
+  "description": "Lootboxes are fun, let's make more of those",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:comic": "npm run build -- --config-name comic",
+    "build:admin": "npm run build -- --config-name admin",
+    "build:extension": "npm run build -- --config-name extension",
+    "start:dev": "webpack-dev-server --mode=development -d -w",
+    "start:comic": "npm run start:dev -- --config-name comic",
+    "start:admin": "npm run start:dev -- --config-name admin",
+    "start:extension": "npm run start:dev -- --config-name extension"
+  },
+  "author": "Max Goodman <c@chromakode.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/rbush": "^3.0.0",
+    "@types/react": "^16.9.26",
+    "@types/react-dom": "^16.9.5",
+    "@types/styled-components": "^5.0.1",
+    "@types/webpack-env": "^1.15.1",
+    "@types/uuid": "^7.0.2",
+    "cache-loader": "^4.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.0.2",
+    "loader-utils": "^2.0.0",
+    "sharp": "^0.25.2",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "zip-webpack-plugin": "^3.0.0"
+  },
+  "dependencies": {
+    "@servie/events": "^1.0.0",
+    "lodash": "^4.17.15",
+    "rbush": "^3.0.1",
+    "react": "^16.13.1",
+    "react-async-hook": "^3.6.1",
+    "react-dom": "^16.13.1",
+    "ts-polyfill": "^3.8.2",
+    "styled-components": "^5.0.1",
+    "uuid": "^7.0.2"
+  }
+}

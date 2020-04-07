@@ -1,0 +1,16 @@
+packages: .
+
+source-repository-package
+  type: git
+  location: https://code.xkrd.net/davean/hashring.git
+  tag: ecebf2e
+
+allow-newer:
+  base
+  lens
+  ghc-prim
+  template-haskell
+
+package maple
+ ghc-options: -Wall -threaded -rtsopts -fprof-auto -fprof-auto-calls
+ test-show-details:streaming

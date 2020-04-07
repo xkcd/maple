@@ -1,0 +1,4 @@
+difficulty,hint,key,image
+0,A,@A,A
+0,A,@a,A
+1,Give me a vowel?,{A|E|a|e},Vowels

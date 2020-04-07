@@ -1,0 +1,13 @@
+import qualified Data.Aeson as JS
+import qualified Data.ByteString.Lazy as BL
+
+ngm = updateMap (runIdentity $ singletonIGridMap2 (pure (0::Word64)) (AABB (V3 (0::Int) 0 0) (pure 0)) (AABB (V2 0 0) (V2 500 500))) (\gid sm -> do { extendedPosY <- foldlM (\m _ -> igridmap2ExtendY gid m) sm [(1::Int)..9]; extendedNegY <- foldlM (\m _ -> igridmap2ExtendYNeg gid m) extendedPosY [(1::Int)..10]; extendedPosX <- foldlM (\m _ -> igridmap2ExtendX gid m) extendedNegY [(1::Int)..19]; foldlM (\m _ -> igridmap2ExtendXNeg gid m) extendedPosX [(1::Int)..20] })
+
+OR
+
+ogm <- loadGridMap
+ngm = updateMap ogm (\gid sm -> igridmap2ExtendX gid sm >>= igridmap2ExtendXNeg gid >>= igridmap2ExtendY gid >>= igridmap2ExtendYNeg gid)
+
+ngm^.binMap.igmBBs.to (bounding . concatMap (corners . fst) . concatMap toList . toList)
+
+BL.writeFile  "gridmap.json" $ JS.encode ngm

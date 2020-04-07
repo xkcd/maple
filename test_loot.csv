@@ -1,0 +1,8 @@
+difficulty,hint,key,image
+0,The start of the alphabet,@a,loot/1/A.png
+0,Comes after A,@b,loot/1/B.png
+0,Comes after B,@c,loot/1/C.png
+0,Comes before E,@d,loot/1/D.png
+0,The second vowel,@e,loot/1/E.png
+5,"With this, you can describe what ail causes",@f,loot/1/F.png
+3,Start a box,@[,loot/2/box.png

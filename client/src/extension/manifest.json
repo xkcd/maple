@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "xkcd loot developer",
+  "version": "0.1",
+  "description": "Allows testing of xkcd's 2020 april fools project.",
+  "permissions": [
+    "${apiServerURL}*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://xkcd.com/*"],
+      "js": ["extension.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

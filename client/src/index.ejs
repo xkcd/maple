@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= comic.name %></title>
+
+    <!-- If xkcd-Regular-v3 is not already included in the page, add this CSS to <head> -->
+    <style>
+      @font-face {
+        font-family: 'xkcd-Regular-v3';
+        src: url('https://xkcd.com/s/4fcbf3.woff') format('woff');
+      }
+
+      #comic {
+        height: <%= comic.height %>px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Comic HTML -->
+    <div id="comic">
+    </div>
+
+    <!-- Embed on all comic pages -->
+    <%= tags.bodyTags %>
+
+    <!-- For Maple comic page, specifically, after other JS -->
+    <script>MapleComic.draw(document.getElementById('comic'))</script>
+
+  </body>
+</html>

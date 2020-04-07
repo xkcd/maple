@@ -1,0 +1,6 @@
+/dist-newstyle
+docs.md
+*~
+/cabal.project.local
+/result
+/bin
